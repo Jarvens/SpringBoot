@@ -28,7 +28,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
      * @return
      */
     @Bean
-    private LoginIntercepter loginIntercepter() {
+    public LoginIntercepter loginIntercepter() {
         return new LoginIntercepter();
     }
 
