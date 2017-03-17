@@ -17,9 +17,6 @@ public class DataRet<T> implements Serializable {
     //返回信息体
     private T body;
 
-    //成功失败
-    private boolean success;
-
     public DataRet() {
 
     }
@@ -49,20 +46,12 @@ public class DataRet<T> implements Serializable {
     }
 
     public boolean isSuccess() {
-        if (this.errorCode != null) {
-            this.success = false;
-        }
-        return success;
+        return this.errorCode == null || "".equals(this.errorCode.trim());
     }
 
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
-    public DataRet(String errorCode, String message, T body, boolean success) {
+    public DataRet(String errorCode, String message, T body) {
         this.errorCode = errorCode;
         this.message = message;
         this.body = body;
-        this.success = success;
     }
 }

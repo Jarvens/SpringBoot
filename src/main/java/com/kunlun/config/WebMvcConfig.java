@@ -44,9 +44,9 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
-        List<MediaType> mediaTypeLiist = new ArrayList<>();
-        mediaTypeLiist.add(MediaType.APPLICATION_JSON);
-        fastJsonHttpMessageConverter.setSupportedMediaTypes(mediaTypeLiist);
+        List<MediaType> mediaTypeList = new ArrayList<>();
+        mediaTypeList.add(MediaType.APPLICATION_JSON);
+        fastJsonHttpMessageConverter.setSupportedMediaTypes(mediaTypeList);
         fastJsonHttpMessageConverter.setCharset(Charset.forName("UTF-8"));
         converters.add(fastJsonHttpMessageConverter);
         super.configureMessageConverters(converters);
