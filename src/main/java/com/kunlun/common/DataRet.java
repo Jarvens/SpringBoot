@@ -3,8 +3,6 @@ package com.kunlun.common;
 import java.io.Serializable;
 
 /**
- *
- *
  * Created by kunlun on 2017/3/17.
  */
 public class DataRet<T> implements Serializable {
@@ -18,6 +16,9 @@ public class DataRet<T> implements Serializable {
 
     //返回信息体
     private T body;
+
+    //成功失败
+    private boolean success;
 
     public DataRet() {
 
@@ -47,9 +48,21 @@ public class DataRet<T> implements Serializable {
         this.body = body;
     }
 
-    public DataRet(String errorCode, String message, T body) {
+    public boolean isSuccess() {
+        if (this.errorCode != null) {
+            this.success = false;
+        }
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public DataRet(String errorCode, String message, T body, boolean success) {
         this.errorCode = errorCode;
         this.message = message;
         this.body = body;
+        this.success = success;
     }
 }
