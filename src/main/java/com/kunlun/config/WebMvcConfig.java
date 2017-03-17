@@ -1,14 +1,19 @@
 package com.kunlun.config;
 
+import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 
+import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,14 +44,29 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
+        List<MediaType> mediaTypeLiist = new ArrayList<>();
+        mediaTypeLiist.add(MediaType.APPLICATION_JSON);
+        fastJsonHttpMessageConverter.setSupportedMediaTypes(mediaTypeLiist);
+        fastJsonHttpMessageConverter.setCharset(Charset.forName("UTF-8"));
+        converters.add(fastJsonHttpMessageConverter);
         super.configureMessageConverters(converters);
     }
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        super.addViewControllers(registry);
+    /**
+     * Thymeleaf 模板解析
+     **/
+    @Bean
+    public ThymeleafViewResolver thymeleafViewResolver() {
+        ThymeleafViewResolver thymeleafViewResolver = new ThymeleafViewResolver();
+        return thymeleafViewResolver;
     }
 
+    /**
+     * 拦截器注册
+     *
+     * @param registry
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(this.loginIntercepter());

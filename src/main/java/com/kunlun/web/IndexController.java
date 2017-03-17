@@ -20,6 +20,10 @@ public class IndexController {
         userService.create("3","王五");
         return "hello world!";
     }
+    @RequestMapping("/json")
+    public String json(){
+        return null;
+    }
 
 
 }
