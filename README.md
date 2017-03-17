@@ -1,12 +1,17 @@
 # Spring-Boot
 
 ## 目录结构 ##
-| -- logs                                               //日志文件目录
-| -- src                                                //源码目录
-|     | -- main
-|           | -- java
-|                  | -- com
-- Thymeleaf模板解析
-- 统一异常处理 MyException
-- 统一返回结构体 DataRet
-- 登录拦截器
+	|-- logs                             // 日志目录
+	|-- src                              // 源码目录
+	|   |-- main                   
+	|       |-- java/com/kunlun          
+	|           |-- common               // 共用组件目录
+	|           |-- config             	 // 全局配置目录
+	|           |-- web                  // 业务目录
+	|     		    |-- Application.class    // 程序启动入口
+	|           |-- Swagger2.class       // RESTful API
+
+### 全局配置 ###
+- DataRet < T >: //RestApi统一返回封装
+- LoginIntercepter: //登录拦截器
+- WebMvcConfig:  //MVC配置

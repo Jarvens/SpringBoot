@@ -1,6 +1,6 @@
-package com.kunlun.impl;
+package com.kunlun.web.impl;
 
-import com.kunlun.service.UserService;
+import com.kunlun.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;

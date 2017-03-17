@@ -1,4 +1,4 @@
-package com.kunlun.service;
+package com.kunlun.web.service;
 
 /**
  * Created by kunlun on 2017/3/17.

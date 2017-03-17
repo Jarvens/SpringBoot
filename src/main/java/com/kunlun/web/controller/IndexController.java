@@ -1,7 +1,7 @@
-package com.kunlun.web;
+package com.kunlun.web.controller;
 
 import com.kunlun.common.DataRet;
-import com.kunlun.service.UserService;
+import com.kunlun.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-package com.kunlun.web;
+package com.kunlun.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
