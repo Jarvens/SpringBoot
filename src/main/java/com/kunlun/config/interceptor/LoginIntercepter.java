@@ -1,4 +1,4 @@
-package com.kunlun.config;
+package com.kunlun.config.interceptor;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
