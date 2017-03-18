@@ -19,6 +19,7 @@ public class LoginIntercepter extends HandlerInterceptorAdapter {
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginIntercepter.class);
 
     private static final String LOGINPATH = "/login";
+    private static final String SWAGGER_UI = "/swagger-ui.html";
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -27,17 +28,23 @@ public class LoginIntercepter extends HandlerInterceptorAdapter {
         response.setHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS,DELETE");
         response.setHeader("Access-Control-Allow-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "X-Requested-With,Cache-Control,Content-Type");
+        response.setHeader("Access-Control-Request-Headers","X-Custom-Header");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.addHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         String requestUrl = request.getRequestURI();
-        if (requestUrl.startsWith(LOGINPATH)) {
-            return true;
-        }
-        HttpSession session = request.getSession();
-        Object user = session.getAttribute("LOGIN");
-        if (user != null) {
-            return true;
-        }
-        response.sendRedirect(request.getContextPath() + LOGINPATH);
-        return false;
+//        if (requestUrl.startsWith(LOGINPATH) || requestUrl.startsWith(SWAGGER_UI)) {
+//            return true;
+//        }
+//        HttpSession session = request.getSession();
+//        Object user = session.getAttribute("LOGIN");
+//        if (user != null) {
+//            return true;
+//        }
+//        response.sendRedirect(request.getContextPath() + LOGINPATH);
+        super.preHandle(request,response,handler);
+        return true;
     }
 
     @Override
